@@ -72,5 +72,14 @@ Variable title
 <% provide(:title, "Help") %>
 <%= yield(:title) %>
 
+Finish static pages
+$ git add -A
+$ git commit -m "Finish static pages"
+$ git checkout master
+$ git merge static-pages
+$ git push
+$ bundle exec rake test
+$ git push heroku
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
