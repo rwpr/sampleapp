@@ -40,6 +40,37 @@ rails g (generate)
 bundle (bundle install)
 rake (rake test)
 
+Merge: From branch to master (Adding master with/without changes with branch)
+Push: From master to branch (Overwriting the master)
+
+$ rails generate controller StaticPages home help
+$ rails destroy  controller StaticPages home help
+
+Migrate:
+Undo a single migration step using
+	$ bundle exec rake db:rollback
+
+To go all the way back to the beginning, we can use
+  $ bundle exec rake db:migrate VERSION=0
+
+Test:
+Controller
+Model
+Integration
+
+be rake test
++ get 'static_pages/about' (routes)
++ def about (controller)
+  end
++ touch app/views/static/about.html.erb (creates view)
++ mv app/views/layouts/application.html.erb layout_file (creates layout file)
+
+Add page titles
+assert_select "title", "Home | Ruby on Rails Tutorial Sample App" (test controller)
+
+Variable title
+<% provide(:title, "Help") %>
+<%= yield(:title) %>
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
