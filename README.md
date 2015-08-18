@@ -28,6 +28,18 @@ Things you may want to cover:
 
 * ...
 
+Make a new branch:
+$ git checkout master
+$ git checkout -b static-pages
+
+rails generate controller StaticPages home help
+
+rails s (server)
+rails c (console)
+rails g (generate)
+bundle (bundle install)
+rake (rake test)
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
