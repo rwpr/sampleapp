@@ -1,9 +1,29 @@
 Rails.application.routes.draw do
-  root 'static#home'
-  get 'static/Pages'
-  get 'static/home'
-  get 'static/help'
-  get 'static/about'
+  get 'users/new'
+
+  # root 'static#home'
+  # get 'static/Pages'
+  # get 'static/home'
+  # get 'static/help'
+  # get 'static/about'
+  # get 'static/contact'
+
+  root             'static#home'
+  # help_path -> '/help'
+  # help_url  -> 'http://www.example.com/help'
+  
+  get 'help'    => 'static#help'
+  get 'about'   => 'static#about'
+  get 'contact' => 'static#contact'
+  get 'pages'   => 'static#pages'
+  get 'signup'   => 'users#new'
+  # 'signup' -- signup_path
+  # users#new -- /users/new
+
+  # routes a GET request for the URL /help to the help action in the Static Pages controller, 
+  # so that we can use the URL /help in place of the more verbose /static_pages/help. As with
+  # the rule for the root route, this creates two named routes, help_path and help_url:
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

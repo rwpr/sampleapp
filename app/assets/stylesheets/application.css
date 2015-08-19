@@ -11,5 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ * ensures that all CSS files in the app/assets/stylesheets directory (including the tree subdirectories) are included into the application CSS.
+ *
  *= require_self
+ * loading sequence the CSS in application.css itself gets included
  */
