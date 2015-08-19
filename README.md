@@ -161,6 +161,44 @@ bundle exec rake test (test User page)
 (view - users/new.html.erb)
 (routes)
 
+rails console --sandbox
+
+User
+user.update_attribute(:name, "The Dude")
+
+validates(:name, presence: true) (user.model)
+test "name should be present" do
+    @user.name = "        "
+    assert_not @user.valid?
+  end (user test)
+
+rails generate migration add_index_to_users_email (db)
+add_index :users, :email, unique: true (class in db)
+bundle exec rake db:migrate (terminal)
+(test/fixtures/users.yml)
+one:
+  name: MyString
+  email: MyString
+
+two:
+  name: MyString
+  email: MyString
+
+ callback, which is a method that gets invoked at a particular point in the lifecycle of an Active Record object.
+
+ before_save callback to downcase the email attribute before saving the user
+
+ before_save { self.email = email.downcase } (user model)
+
+ add a way to authenticate a user based on a given password
+ has_secure_password (user model)
+ The only requirement for has_secure_password to work its magic is for the corresponding model to have an attribute called password_digest
+ rails generate migration add_password_digest_to_users password_digest:string (terminal)
+gem 'bcrypt','3.1.7' 
+To make the password digest, has_secure_password uses a state-of-the-art hash function called bcrypt. By hashing the password with bcrypt, we ensure that an attacker won’t be able to log in to the site even if they manage to obtain a copy of the database.
+
+!!user.authenticate("foobar") foobar is a password
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
